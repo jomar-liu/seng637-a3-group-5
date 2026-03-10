@@ -1,4 +1,6 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=22997914&assignment_repo_type=AssignmentRepo)
-seng637-a3
+# SENG637-a2 Group 5
 
-Read [the assignment guideline](seng637-a3.md) 
+## Main deliverables
+- [Lab Report](https://github.com/jomar-liu/seng637-a2-group-5/blob/main/seng637-a2-5.md)
+- [Range Test Suite: /src/org/jfree/data/test/RangeTest.java](https://github.com/jomar-liu/seng637-a3-group-5/blob/main/src/org/jfree/data/RangeTest.java)
+- [DataUtilities Test Suite: /src/org/jfree/data/DataUtilitiesTest.java](https://github.com/jomar-liu/seng637-a3-group-5/blob/main/src/org/jfree/data/DataUtilitiesTest.java)
