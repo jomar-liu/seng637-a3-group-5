@@ -512,6 +512,15 @@ import org.junit.Test;
             assertEquals("Clamped lower bound should be 0.0", 0.0, shifted.getLowerBound(), 0.0001);
             assertEquals("Shifted upper bound should be 2.0", 2.0, shifted.getUpperBound(), 0.0001);
         }
+        
+        @Test
+        public void testShift_ZeroBound_NoCrossing_StaysZero() {
+            // lower bound is exactly 0.0 — third branch of shiftWithNoZeroCrossing
+            Range base = new Range(0.0, 4.0);
+            Range shifted = Range.shift(base, -2.0, false);
+            assertEquals("Zero bound should stay at 0.0", 0.0, shifted.getLowerBound(), 0.0001);
+            assertEquals("Upper should shift to 2.0", 2.0, shifted.getUpperBound(), 0.0001);
+        }
      
         // =========================================================
         // FUNCTION 12: equals(Object obj)
@@ -1215,6 +1224,12 @@ import org.junit.Test;
             assertEquals("Length should remain 0.0", 0.0, result.getLength(), 0.0001);
         }
         
+       // 1. Hit the scale() negative factor guard
+        @Test(expected = IllegalArgumentException.class)
+        public void testScale_NegativeFactor_ThrowsException() {
+            Range.scale(range, -1.0);
+        }
+        
         // =========================================================
         // FUNCTION 23:CombineIgnoringNaN  — fully new coverage
         // =========================================================
@@ -1267,9 +1282,14 @@ import org.junit.Test;
             assertEquals(1.0, result.getLowerBound(), 0.0001);
             assertEquals(8.0, result.getUpperBound(), 0.0001);
         }
-     
-       
-    }
+        
+     // Trigger the constructor's illegal argument exception
+		
+		 @Test(expected = IllegalArgumentException.class) 
+		 public void testConstructor_InvalidRange_ThrowsException() { 
+			 new Range(5.0, 1.0);   //lower > upper → should throw
+		}
+}
     
     
     
